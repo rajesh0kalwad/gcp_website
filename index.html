@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Discover Kalawad Enterprise: premium watches, dependable transport and considered consultation."
+    />
+    <meta name="theme-color" content="#f5f3ed" />
+    <title>Kalawad Enterprise — A standard of its own</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f5f3ed;
+        --ink: #1c211d;
+        --muted: #72766d;
+        --line: #dedfd6;
+        --green: #435b48;
+        --green-dark: #27382d;
+        --lime: #d6e0a6;
+        --orange: #bd6845;
+        --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1320px, calc(100% - 96px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: relative;
+        z-index: 5;
+        border-bottom: 1px solid rgb(28 33 29 / 8%);
+      }
+
+      .nav {
+        display: flex;
+        min-height: 88px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.035em;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border: 1px solid var(--ink);
+        border-radius: 50%;
+        font-family: var(--serif);
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .brand-name {
+        display: grid;
+        gap: 2px;
+      }
+
+      .brand-name small {
+        color: var(--muted);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(24px, 3.2vw, 48px);
+        color: #555b53;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .nav-links a:not(.nav-cta):hover,
+      .footer-links a:hover {
+        color: var(--orange);
+      }
+
+      .nav-cta,
+      .button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 0 20px;
+        border: 1px solid var(--ink);
+        border-radius: 3px;
+        background: var(--ink);
+        color: white;
+        font-size: 11px;
+        font-weight: 600;
+        transition:
+          background 160ms ease,
+          color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .nav-cta:hover,
+      .button:hover {
+        transform: translateY(-2px);
+        background: var(--green-dark);
+      }
+
+      .button-light {
+        border-color: rgb(255 255 255 / 48%);
+        background: transparent;
+        color: white;
+      }
+
+      .button-light:hover {
+        background: white;
+        color: var(--ink);
+      }
+
+      .arrow {
+        font-size: 15px;
+        line-height: 1;
+      }
+
+      .menu-toggle {
+        display: none;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+      }
+
+      .hero {
+        display: grid;
+        min-height: 625px;
+        grid-template-columns: 1fr 0.88fr;
+        align-items: center;
+        gap: 4%;
+        padding-top: 24px;
+        padding-bottom: 48px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--green);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 25px;
+        height: 1px;
+        background: currentColor;
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .hero h1 {
+        max-width: 650px;
+        margin: 26px 0 22px;
+        font-family: var(--serif);
+        font-size: clamp(60px, 7.4vw, 101px);
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        line-height: 0.96;
+      }
+
+      .hero h1 em {
+        color: var(--green);
+        font-weight: 400;
+      }
+
+      .hero-copy {
+        max-width: 420px;
+        margin-bottom: 30px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .button-outline {
+        border-color: var(--line);
+        background: transparent;
+        color: var(--ink);
+      }
+
+      .button-outline:hover {
+        background: var(--ink);
+        color: white;
+      }
+
+      .hero-art {
+        position: relative;
+        display: grid;
+        min-height: 500px;
+        overflow: hidden;
+        place-items: center;
+        border-radius: 3px;
+        background:
+          radial-gradient(ellipse at 68% 28%, rgb(226 232 205 / 30%), transparent 36%),
+          linear-gradient(145deg, #66785b 0%, #3b5140 49%, #26392e 100%);
+      }
+
+      .hero-art::before,
+      .hero-art::after {
+        position: absolute;
+        width: 370px;
+        height: 370px;
+        border: 1px solid rgb(246 243 232 / 12%);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .hero-art::after {
+        width: 470px;
+        height: 470px;
+      }
+
+      .art-label {
+        position: absolute;
+        z-index: 1;
+        top: 28px;
+        left: 28px;
+        color: rgb(255 255 255 / 74%);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .art-index {
+        position: absolute;
+        right: 28px;
+        bottom: 28px;
+        color: rgb(255 255 255 / 70%);
+        font-family: var(--serif);
+        font-size: 14px;
+      }
+
+      .hero-watch {
+        position: relative;
+        z-index: 1;
+        width: min(76%, 340px);
+        height: auto;
+        filter: drop-shadow(0 24px 24px rgb(14 21 15 / 32%));
+        transform: rotate(-12deg);
+      }
+
+      .intro-strip {
+        display: flex;
+        min-height: 92px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .intro-strip p {
+        margin: 0;
+        color: #555b53;
+        font-family: var(--serif);
+        font-size: clamp(16px, 2vw, 21px);
+      }
+
+      .intro-note {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      .offerings {
+        padding: 112px 0 120px;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 38px;
+      }
+
+      .section-heading h2 {
+        max-width: 520px;
+        margin: 18px 0 0;
+        font-family: var(--serif);
+        font-size: clamp(38px, 5vw, 60px);
+        font-weight: 400;
+        letter-spacing: -0.055em;
+        line-height: 1.02;
+      }
+
+      .section-heading > p {
+        max-width: 300px;
+        margin: 0 0 4px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.8;
+      }
+
+      .module-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .module-card {
+        display: flex;
+        min-height: 330px;
+        flex-direction: column;
+        padding: 25px 26px 22px;
+        border: 1px solid var(--line);
+        background: rgb(255 255 255 / 24%);
+        transition:
+          border-color 180ms ease,
+          transform 180ms ease,
+          background 180ms ease;
+      }
+
+      .module-card:hover {
+        transform: translateY(-4px);
+        border-color: #b6b9aa;
+        background: #faf9f5;
+      }
+
+      .module-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .module-icon {
+        display: grid;
+        width: 52px;
+        height: 52px;
+        margin: 32px 0 20px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        color: var(--green);
+      }
+
+      .module-icon svg {
+        width: 23px;
+        height: 23px;
+      }
+
+      .module-card h3 {
+        margin-bottom: 10px;
+        font-family: var(--serif);
+        font-size: 26px;
+        font-weight: 400;
+        letter-spacing: -0.035em;
+      }
+
+      .module-card > p {
+        max-width: 320px;
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.8;
+      }
+
+      .module-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: auto;
+        color: var(--green);
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .module-link:hover {
+        color: var(--orange);
+      }
+
+      .feature {
+        position: relative;
+        overflow: hidden;
+        background: var(--green-dark);
+        color: white;
+      }
+
+      .feature-inner {
+        display: grid;
+        min-height: 410px;
+        grid-template-columns: 0.85fr 1.15fr;
+        align-items: center;
+        gap: 8%;
+        padding-top: 72px;
+        padding-bottom: 72px;
+      }
+
+      .feature-copy .eyebrow {
+        color: var(--lime);
+      }
+
+      .feature-copy h2 {
+        max-width: 430px;
+        margin: 22px 0 18px;
+        font-family: var(--serif);
+        font-size: clamp(38px, 4.5vw, 58px);
+        font-weight: 400;
+        letter-spacing: -0.055em;
+        line-height: 1.03;
+      }
+
+      .feature-copy p {
+        max-width: 360px;
+        margin-bottom: 25px;
+        color: rgb(255 255 255 / 67%);
+        font-size: 12px;
+        line-height: 1.9;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 28px;
+      }
+
+      .feature-item {
+        min-height: 116px;
+        padding: 24px 0 19px;
+        border-top: 1px solid rgb(255 255 255 / 18%);
+      }
+
+      .feature-item span {
+        color: var(--lime);
+        font-family: var(--serif);
+        font-size: 19px;
+      }
+
+      .feature-item h3 {
+        margin: 9px 0 6px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .feature-item p {
+        margin: 0;
+        color: rgb(255 255 255 / 57%);
+        font-size: 10px;
+        line-height: 1.7;
+      }
+
+      .contact {
+        display: flex;
+        min-height: 270px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        padding-top: 65px;
+        padding-bottom: 65px;
+      }
+
+      .contact h2 {
+        max-width: 620px;
+        margin: 17px 0 0;
+        font-family: var(--serif);
+        font-size: clamp(40px, 5.2vw, 66px);
+        font-weight: 400;
+        letter-spacing: -0.065em;
+        line-height: 1;
+      }
+
+      .contact h2 em {
+        color: var(--green);
+        font-weight: 400;
+      }
+
+      .contact .button {
+        flex-shrink: 0;
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--line);
+      }
+
+      .footer-inner {
+        display: flex;
+        min-height: 86px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .footer-copy {
+        color: var(--muted);
+        font-size: 10px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 22px;
+        color: #555b53;
+        font-size: 10px;
+        font-weight: 600;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--orange);
+        outline-offset: 4px;
+      }
+
+      @media (max-width: 900px) {
+        .shell {
+          width: min(100% - 56px, 720px);
+        }
+
+        .hero {
+          min-height: 550px;
+          grid-template-columns: 1fr 0.82fr;
+          gap: 3%;
+        }
+
+        .hero-art {
+          min-height: 400px;
+        }
+
+        .nav-links {
+          gap: 20px;
+        }
+
+        .feature-inner {
+          gap: 5%;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .shell {
+          width: calc(100% - 40px);
+        }
+
+        .nav {
+          min-height: 72px;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: calc(100% - 1px);
+          right: 0;
+          left: 0;
+          display: none;
+          align-items: stretch;
+          gap: 0;
+          padding: 8px 20px 20px;
+          border-bottom: 1px solid var(--line);
+          background: var(--paper);
+        }
+
+        .nav-links.is-open {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .nav-links > a:not(.nav-cta) {
+          padding: 14px 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .nav-cta {
+          margin-top: 15px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 34px;
+          padding-top: 54px;
+          padding-bottom: 34px;
+        }
+
+        .hero h1 {
+          max-width: 520px;
+          font-size: clamp(58px, 15vw, 82px);
+        }
+
+        .hero-copy {
+          font-size: 13px;
+        }
+
+        .hero-art {
+          min-height: 360px;
+        }
+
+        .hero-watch {
+          width: min(68%, 290px);
+        }
+
+        .intro-strip {
+          min-height: 100px;
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          gap: 8px;
+        }
+
+        .intro-note {
+          text-align: left;
+        }
+
+        .offerings {
+          padding: 78px 0 82px;
+        }
+
+        .section-heading {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 16px;
+          margin-bottom: 26px;
+        }
+
+        .section-heading h2 {
+          font-size: 48px;
+        }
+
+        .module-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .module-card {
+          min-height: 290px;
+          padding: 22px;
+        }
+
+        .module-icon {
+          margin-top: 24px;
+        }
+
+        .feature-inner {
+          grid-template-columns: 1fr;
+          gap: 34px;
+          padding-top: 70px;
+          padding-bottom: 62px;
+        }
+
+        .feature-grid {
+          gap: 0 18px;
+        }
+
+        .feature-item {
+          min-height: 126px;
+        }
+
+        .contact {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          gap: 24px;
+          padding-top: 70px;
+          padding-bottom: 70px;
+        }
+
+        .contact h2 {
+          font-size: 52px;
+        }
+
+        .footer-inner {
+          min-height: 104px;
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          gap: 14px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Kalawad Enterprise home">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <span class="brand-name">
+            Kalawad Enterprise
+            <small>Distinct by design</small>
+          </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="primary-links"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+        </button>
+        <div class="nav-links" id="primary-links">
+          <a href="#watches">Premium Watches</a>
+          <a href="#transport">Transport</a>
+          <a href="#consultation">Consultation</a>
+          <a class="nav-cta" href="#consultation">Start a conversation <span class="arrow">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero shell" id="home" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <span class="eyebrow">Three disciplines. One standard.</span>
+          <h1 id="hero-title">A standard<br />of <em>its own.</em></h1>
+          <p class="hero-copy">
+            Good things are built on care, craft and a promise kept. Discover a considered
+            collection of services from Kalawad Enterprise.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#offerings">Explore our services <span class="arrow">↘</span></a>
+            <a class="button button-outline" href="#consultation">Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="An illustrated premium timepiece" role="img">
+          <span class="art-label">A considered collection · No. 01</span>
+          <svg class="hero-watch" viewBox="0 0 320 440" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="strap" x1="120" y1="0" x2="204" y2="440" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#D2C1A0" />
+                <stop offset=".48" stop-color="#7E6549" />
+                <stop offset="1" stop-color="#D4C4A5" />
+              </linearGradient>
+              <linearGradient id="bezel" x1="68" y1="122" x2="250" y2="320" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F5E9CE" />
+                <stop offset=".45" stop-color="#AE9165" />
+                <stop offset="1" stop-color="#E9D5AE" />
+              </linearGradient>
+              <radialGradient id="dial" cx="0" cy="0" r="1" gradientTransform="matrix(0 100 -100 0 160 220)" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#4F6751" />
+                <stop offset="1" stop-color="#26382D" />
+              </radialGradient>
+            </defs>
+            <path d="M111 12h98l16 128H95l16-128ZM95 300h130l-16 128h-98L95 300Z" fill="url(#strap)" />
+            <path d="m124 30 3 82m66-82-3 82m-66 223 3 76m66-76-3 76" stroke="#E3D5BC" stroke-opacity=".5" stroke-width="2" />
+            <rect x="73" y="115" width="174" height="202" rx="72" fill="url(#bezel)" />
+            <rect x="84" y="126" width="152" height="180" rx="62" fill="#222923" />
+            <rect x="92" y="134" width="136" height="164" rx="55" fill="url(#dial)" stroke="#D8C49E" stroke-opacity=".7" />
+            <circle cx="160" cy="216" r="53" stroke="#D8C49E" stroke-opacity=".58" />
+            <circle cx="160" cy="216" r="47" stroke="#D8C49E" stroke-opacity=".22" />
+            <path d="M160 177v40l24 17" stroke="#F0E2C2" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M160 183v33" stroke="#D7A36F" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="160" cy="216" r="4" fill="#D9AE7A" />
+            <path d="M160 152v7m0 114v7m60-64h-7m-106 0h-7m102-42-5 5m-76 76-5 5m86 0-5-5m-76-76-5-5" stroke="#E9D9B6" stroke-width="2" stroke-linecap="round" />
+            <text x="160" y="196" fill="#F0E2C2" font-family="Georgia, serif" font-size="8" letter-spacing="2" text-anchor="middle">KALAWAD</text>
+            <text x="160" y="258" fill="#E8D6B2" font-family="Arial, sans-serif" font-size="5" letter-spacing="2" text-anchor="middle">AUTOMATIC · EST. WITH INTENT</text>
+            <rect x="241" y="192" width="15" height="35" rx="5" fill="#D7C39D" />
+            <rect x="246" y="200" width="13" height="20" rx="3" fill="#997B53" />
+          </svg>
+          <span class="art-index">Time, thoughtfully kept &nbsp;·&nbsp; 01 / 03</span>
+        </div>
+      </section>
+
+      <div class="intro-strip shell">
+        <p>Thoughtful service, across every detail.</p>
+        <span class="intro-note">Craft &nbsp;·&nbsp; Movement &nbsp;·&nbsp; Perspective</span>
+      </div>
+
+      <section class="offerings shell" id="offerings" aria-labelledby="offerings-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">What we do</span>
+            <h2 id="offerings-title">Different paths.<br />Shared purpose.</h2>
+          </div>
+          <p>From a lasting timepiece to the journey ahead, we bring a personal touch to every service.</p>
+        </div>
+
+        <div class="module-grid">
+          <article class="module-card" id="watches">
+            <div class="module-top"><span>01 / Collect</span><span>Since always</span></div>
+            <span class="module-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4" />
+                <path d="M12 7v5l3 2M9 2h6m-6 20h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+              </svg>
+            </span>
+            <h3>Premium Watches</h3>
+            <p>Timeless design, considered detail and a collection chosen for the moments that matter.</p>
+            <a class="module-link" href="#consultation">Explore the collection <span class="arrow">↗</span></a>
+          </article>
+
+          <article class="module-card" id="transport">
+            <div class="module-top"><span>02 / Move</span><span>With purpose</span></div>
+            <span class="module-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+                <circle cx="7.5" cy="18" r="1.7" fill="var(--paper)" stroke="currentColor" stroke-width="1.4" />
+                <circle cx="18" cy="18" r="1.7" fill="var(--paper)" stroke="currentColor" stroke-width="1.4" />
+                <path d="M16 10v4h5" stroke="currentColor" stroke-width="1.4" />
+              </svg>
+            </span>
+            <h3>Transport</h3>
+            <p>Dependable transport solutions shaped around your schedule, your cargo and your destination.</p>
+            <a class="module-link" href="#consultation">Plan your journey <span class="arrow">↗</span></a>
+          </article>
+
+          <article class="module-card" id="consultation">
+            <div class="module-top"><span>03 / Consider</span><span>One to one</span></div>
+            <span class="module-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 19.5V5.8A1.8 1.8 0 0 1 5.8 4h12.4A1.8 1.8 0 0 1 20 5.8v9.4a1.8 1.8 0 0 1-1.8 1.8H9l-5 2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+                <path d="M8 9h8m-8 4h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+              </svg>
+            </span>
+            <h3>Consultation</h3>
+            <p>A thoughtful conversation to understand what you need and help you decide what comes next.</p>
+            <a class="module-link" href="#contact">Start a conversation <span class="arrow">↗</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="feature" aria-labelledby="approach-title">
+        <div class="feature-inner shell">
+          <div class="feature-copy">
+            <span class="eyebrow">The Kalawad approach</span>
+            <h2 id="approach-title">Good business<br />is personal.</h2>
+            <p>We believe the best service starts with listening. Then it follows through—in every detail, every time.</p>
+            <a class="button button-light" href="#contact">Let’s talk <span class="arrow">↗</span></a>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <span>01</span>
+              <h3>Care in the details</h3>
+              <p>Thoughtful choices, made with purpose.</p>
+            </div>
+            <div class="feature-item">
+              <span>02</span>
+              <h3>People come first</h3>
+              <p>A real conversation, not a one-size-fits-all answer.</p>
+            </div>
+            <div class="feature-item">
+              <span>03</span>
+              <h3>Promises kept</h3>
+              <p>Reliable service, from first hello to follow-through.</p>
+            </div>
+            <div class="feature-item">
+              <span>04</span>
+              <h3>Built for the long run</h3>
+              <p>Lasting value over the quick answer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact shell" id="contact" aria-labelledby="contact-title">
+        <div>
+          <span class="eyebrow">Your next step starts here</span>
+          <h2 id="contact-title">Let’s make it<br /><em>meaningful.</em></h2>
+        </div>
+        <a class="button" href="#home">Explore Kalawad <span class="arrow">↗</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner shell">
+        <a class="brand" href="#home" aria-label="Kalawad Enterprise home">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <span class="brand-name">Kalawad Enterprise <small>Distinct by design</small></span>
+        </a>
+        <span class="footer-copy">© <span id="year"></span> Kalawad Enterprise. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="#watches">Watches</a>
+          <a href="#transport">Transport</a>
+          <a href="#consultation">Consultation</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const primaryLinks = document.querySelector("#primary-links");
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+        primaryLinks.classList.toggle("is-open", !isOpen);
+      });
+
+      primaryLinks.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation menu");
+          primaryLinks.classList.remove("is-open");
+        }
+      });
+
+      document.querySelector("#year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
