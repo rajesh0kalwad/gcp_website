@@ -520,11 +520,11 @@
       }
 
       .contact {
-        display: flex;
-        min-height: 270px;
+        display: grid;
+        min-height: 360px;
+        grid-template-columns: 0.9fr 1.1fr;
         align-items: center;
-        justify-content: space-between;
-        gap: 30px;
+        gap: 8%;
         padding-top: 65px;
         padding-bottom: 65px;
       }
@@ -544,8 +544,72 @@
         font-weight: 400;
       }
 
-      .contact .button {
-        flex-shrink: 0;
+      .inquiry-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .form-field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .form-field-wide,
+      .form-footer {
+        grid-column: 1 / -1;
+      }
+
+      .form-field label {
+        color: #555b53;
+        font-size: 10px;
+        font-weight: 600;
+      }
+
+      .form-field input,
+      .form-field select,
+      .form-field textarea {
+        width: 100%;
+        min-height: 43px;
+        padding: 11px 12px;
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        background: #fbfaf7;
+        color: var(--ink);
+        font: inherit;
+        font-size: 12px;
+      }
+
+      .form-field textarea {
+        min-height: 96px;
+        resize: vertical;
+      }
+
+      .form-footer {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .form-status {
+        margin: 0;
+        color: var(--green);
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .form-status[data-state="error"] {
+        color: #a2382a;
+      }
+
+      .form-status:empty {
+        display: none;
+      }
+
+      .inquiry-form button:disabled {
+        cursor: wait;
+        opacity: 0.65;
       }
 
       .site-footer {
@@ -723,16 +787,23 @@
         }
 
         .contact {
-          align-items: flex-start;
-          flex-direction: column;
-          justify-content: center;
-          gap: 24px;
+          grid-template-columns: 1fr;
+          gap: 28px;
           padding-top: 70px;
           padding-bottom: 70px;
         }
 
         .contact h2 {
           font-size: 52px;
+        }
+
+        .inquiry-form {
+          grid-template-columns: 1fr;
+        }
+
+        .form-field-wide,
+        .form-footer {
+          grid-column: auto;
         }
 
         .footer-inner {
@@ -933,7 +1004,32 @@
           <span class="eyebrow">Your next step starts here</span>
           <h2 id="contact-title">Let’s make it<br /><em>meaningful.</em></h2>
         </div>
-        <a class="button" href="#home">Explore Kalawad <span class="arrow">↗</span></a>
+        <form class="inquiry-form" id="inquiry-form">
+          <div class="form-field">
+            <label for="inquiry-name">Your name</label>
+            <input id="inquiry-name" name="name" autocomplete="name" minlength="2" maxlength="120" required />
+          </div>
+          <div class="form-field">
+            <label for="inquiry-email">Email address</label>
+            <input id="inquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required />
+          </div>
+          <div class="form-field form-field-wide">
+            <label for="inquiry-service">I’m interested in</label>
+            <select id="inquiry-service" name="service_slug" required>
+              <option value="premium-watches">Premium Watches</option>
+              <option value="transport">Transport</option>
+              <option value="consultation">Consultation</option>
+            </select>
+          </div>
+          <div class="form-field form-field-wide">
+            <label for="inquiry-message">How can we help?</label>
+            <textarea id="inquiry-message" name="message" minlength="10" maxlength="4000" required></textarea>
+          </div>
+          <div class="form-footer">
+            <button class="button" type="submit">Send an enquiry <span class="arrow">↗</span></button>
+            <p class="form-status" id="inquiry-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
       </section>
     </main>
 
@@ -955,6 +1051,8 @@
     <script>
       const menuToggle = document.querySelector(".menu-toggle");
       const primaryLinks = document.querySelector("#primary-links");
+      const inquiryForm = document.querySelector("#inquiry-form");
+      const inquiryStatus = document.querySelector("#inquiry-status");
 
       menuToggle.addEventListener("click", () => {
         const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
@@ -968,6 +1066,36 @@
           menuToggle.setAttribute("aria-expanded", "false");
           menuToggle.setAttribute("aria-label", "Open navigation menu");
           primaryLinks.classList.remove("is-open");
+        }
+      });
+
+      inquiryForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const submitButton = inquiryForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        inquiryStatus.dataset.state = "";
+        inquiryStatus.textContent = "Sending your enquiry…";
+
+        try {
+          const response = await fetch("/api/inquiries", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(Object.fromEntries(new FormData(inquiryForm))),
+          });
+          const result = await response.json();
+          if (!response.ok) {
+            throw new Error(result.detail || "We could not submit your enquiry. Please try again.");
+          }
+          inquiryForm.reset();
+          inquiryStatus.textContent = result.message;
+        } catch (error) {
+          inquiryStatus.dataset.state = "error";
+          inquiryStatus.textContent =
+            error instanceof TypeError
+              ? "We couldn’t reach the server. Please try again in a moment."
+              : error.message;
+        } finally {
+          submitButton.disabled = false;
         }
       });
 
